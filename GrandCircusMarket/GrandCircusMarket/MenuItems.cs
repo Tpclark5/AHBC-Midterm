@@ -11,26 +11,29 @@ namespace GrandCircusMarket
   
     public class Meat : MenuItems
     {
-        public double PriceOfChicken { get; set; }
-        public double PriceOfFish { get; set; }
-        public double PriceOfBeef { get; set; }
-        public double PriceOfPork { get; set; }
+        public double Chicken { get; set; }
+        public double Fish { get; set; }
+        public double Beef { get; set; }
+        public double Pork { get; set; }
     }
 
     public class Produce : MenuItems
     {
-        public double PriceOfApples { get; set; }
-        public double PriceOfOranges { get; set; }
-        public double PriceOfKale { get; set; }
-        public double PriceOfSpinach { get; set; }
+        public double Apples { get; set; }
+        public double Oranges { get; set; }
+        public double Kale { get; set; }
+        public double Spinach { get; set; }
 
     }
 
     public class Drinks : MenuItems
     {
-        public double PriceOfWater { get; set; }
-        public double PriceOfJuice { get; set; }
-        public double PriceOfCoffee { get; set; }
-        public double PriceOfBeer { get; set; }
+        public double Water { get; set; }
+        public double Juice { get; set; }
+        public double Coffee { get; set; }
+        public double Beer { get; set; }
     }
+
+
+
 }
