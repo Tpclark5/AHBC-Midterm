@@ -27,26 +27,22 @@ namespace GrandCircusMarket
                 sw.WriteLine("[11]Coffee . . . . $2");
                 sw.WriteLine("[12]Beer . . . . $6");
             }
-
-
-
-                if (File.Exists(menuPath))
-            
-            {
                 var menu = new List<string>();
-                using(StreamReader sr = new StreamReader(menuPath))
+                using (StreamReader sr = new StreamReader(menuPath))
                 {
                     while (!sr.EndOfStream)
                     {
                         menu.Add(sr.ReadLine());
                     }
-                    
+
                 }
                 foreach (string buildList in menu)
                 {
                     Console.WriteLine(buildList);
                 }
-            }
+
+            
+
         }
         
         
