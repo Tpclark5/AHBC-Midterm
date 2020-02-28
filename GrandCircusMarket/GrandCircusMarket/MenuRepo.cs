@@ -7,36 +7,66 @@ namespace GrandCircusMarket
 {
     public class MenuRepo
     {
-        public string selectMenuItem()
+        public int selectMenuItem()
         {
-            var customerOptions = new List<MenuItem>();
-
-            customerOptions.Add(new Meat() { Chicken = 3 });
-            customerOptions.Add(new Meat() { Beef = 6 });
-            customerOptions.Add(new Meat() { Fish = 5 });
-            customerOptions.Add(new Meat() { Pork = 4 });
-            customerOptions.Add(new Produce() { Apples = 2 });
-            customerOptions.Add(new Produce() { Oranges = 2 });
-            customerOptions.Add(new Produce() { Kale = 5 });
-            customerOptions.Add(new Produce() { Spinach = 4 });
-            customerOptions.Add(new Drink() { Water = 1 });
-            customerOptions.Add(new Drink() { Juice = 3 });
-            customerOptions.Add(new Drink() { Coffee = 2 });
-            customerOptions.Add(new Drink() { Beer = 6 });
-
-
+            int priceOfUserSelection = 0;
             Console.WriteLine("What would you like to order? Please select a number from the menu");
-            int userOrderOne = int.Parse(Console.ReadLine());
-            var firstItem = customerOptions[userOrderOne];
-            Console.WriteLine(firstItem);
+            var userInput = Console.ReadLine();
+            if (Enum.TryParse<ItemOptions>(userInput, out ItemOptions itemoptions))
+            {
+                switch (itemoptions)
+                {
+                    case ItemOptions.Chicken:
+                        priceOfUserSelection = 3;
+                        break;
+                    case ItemOptions.Beef:
+                        priceOfUserSelection = 6;
+                        break;
+                    case ItemOptions.Fish:
+                        priceOfUserSelection = 5;
+                        break;
+                    case ItemOptions.Pork:
+                        priceOfUserSelection = 4;
+                        break;
+                    case ItemOptions.Apples:
+                        priceOfUserSelection = 2;
+                        break;
+                    case ItemOptions.Oranges:
+                        priceOfUserSelection = 2;
+                        break;
+                    case ItemOptions.Kale:
+                        priceOfUserSelection = 5;
+                        break;
+                    case ItemOptions.Spinach:
+                        priceOfUserSelection = 4;
+                        break;
+                    case ItemOptions.Water:
+                        priceOfUserSelection = 1;
+                        break;
+                    case ItemOptions.Juice:
+                        priceOfUserSelection = 3;
+                        break;
+                    case ItemOptions.Coffee:
+                        priceOfUserSelection = 2;
+                        break;
+                    case ItemOptions.Beer:
+                        priceOfUserSelection = 6;
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
+
+             
+            Console.WriteLine($"Your item will cost ${priceOfUserSelection}");
 
             Console.WriteLine("How Many Would you like?");
             int userQuantityOne = int.Parse(Console.ReadLine());
 
-            
+            Console.WriteLine($" Your subtotal will be ${priceOfUserSelection * userQuantityOne}");
+            return priceOfUserSelection*userQuantityOne;
            
-            return $"You have Ordered {userQuantityOne} {firstItem}";
-
                       
             
         }
