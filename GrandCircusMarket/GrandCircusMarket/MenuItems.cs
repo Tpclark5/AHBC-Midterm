@@ -4,34 +4,36 @@ using System.Text;
 
 namespace GrandCircusMarket
 {
-    public class MenuItems
+    public class MenuItem
     {
 
     }
-  
-    public class Meat : MenuItems
+
+
+
+    public class Meat : MenuItem
     {
-        public double Chicken { get; set; }
-        public double Fish { get; set; }
-        public double Beef { get; set; }
-        public double Pork { get; set; }
+        public int Chicken { get; set; }
+        public int Fish { get; set; }
+        public int Beef { get; set; }
+        public int Pork { get; set; }
     }
 
-    public class Produce : MenuItems
+    public class Produce : MenuItem
     {
-        public double Apples { get; set; }
-        public double Oranges { get; set; }
-        public double Kale { get; set; }
-        public double Spinach { get; set; }
-
+        public int Apples { get; set; }
+        public int Oranges { get; set; }
+        public int Kale { get; set; }
+        public int Spinach { get; set; }
     }
 
-    public class Drinks : MenuItems
-    {
-        public double Water { get; set; }
-        public double Juice { get; set; }
-        public double Coffee { get; set; }
-        public double Beer { get; set; }
+
+    public class Drink:MenuItem
+    { 
+        public int Water { get; set; }
+        public int Juice { get; set; }
+        public int Coffee { get; set; }
+        public int Beer { get; set; }
     }
 
 

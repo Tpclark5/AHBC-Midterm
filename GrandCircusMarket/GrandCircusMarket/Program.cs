@@ -9,8 +9,8 @@ namespace GrandCircusMarket
             Console.WriteLine("Welcome to Grand Circus Market");
             var menu = new FileIO();
             menu.CreateDoc();
-            var getUserInput = new RunMenuApp();
-            getUserInput.RunApp();
+            var tryOrderLogic = new MenuRepo();
+            tryOrderLogic.selectMenuItem();
 
 
         }
