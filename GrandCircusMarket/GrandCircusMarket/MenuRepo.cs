@@ -58,18 +58,41 @@ namespace GrandCircusMarket
                 
             }
 
-             
             Console.WriteLine($"Your item will cost ${priceOfUserSelection}");
 
             Console.WriteLine("How Many Would you like?");
             int userQuantityOne = int.Parse(Console.ReadLine());
+            var subtotal = priceOfUserSelection * userQuantityOne;
+            Console.WriteLine($"Your subtotal is {subtotal}");
+            RedisplayMenu();
+            return subtotal;
 
-            Console.WriteLine($" Your subtotal will be ${priceOfUserSelection * userQuantityOne}");
-            return priceOfUserSelection*userQuantityOne;
-           
-                      
-            
         }
 
-    }
+        public void RedisplayMenu()
+        {
+            bool userWantsMoreFood = true;
+            Console.WriteLine( "Would you like to see the menu again? [y/n]");
+            var userInput = Console.ReadLine();
+            while (userWantsMoreFood)
+            {
+                if (userInput.Equals("y", StringComparison.OrdinalIgnoreCase))
+                {
+                    var menu = new FileIO();
+                    menu.CreateDoc();
+                    selectMenuItem();
+                }
+                else
+                {
+                    userWantsMoreFood = false;
+                    Console.WriteLine("Thank you for your order!");
+                }
+              
+            }
+        }
+
+        
+
+    } 
+
 }
