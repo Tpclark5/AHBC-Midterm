@@ -11,6 +11,8 @@ namespace GrandCircusMarket
             menu.CreateDoc();
             var tryOrderLogic = new MenuRepo();
             tryOrderLogic.selectMenuItem();
+            var payment = new RunMenuApp();
+            payment.RunApp();
 
         }
     }
