@@ -6,13 +6,8 @@ namespace GrandCircusMarket
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Grand Circus Market");
-            var menu = new FileIO();
-            menu.CreateDoc();
-            var tryOrderLogic = new MenuRepo();
-            tryOrderLogic.selectMenuItem();
-            var payment = new RunMenuApp();
-            payment.RunApp();
+            var runApp = new CallToRun();
+            runApp.RunPOSapp();
 
         }
     }

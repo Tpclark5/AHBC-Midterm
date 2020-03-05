@@ -6,7 +6,7 @@ namespace GrandCircusMarket
 {
     public class RunMenuApp
     {
-      public void RunApp()
+      public void GetPaymentType()
         {
             Console.WriteLine("How would you like to pay? Please select one of the following payment types:");
             Console.WriteLine("[1] Cash");
@@ -16,11 +16,13 @@ namespace GrandCircusMarket
 
             if (userSelectedPaymentType == 1)
             {
+                var getsubtotal = new ShoppingCart();
+                getsubtotal.GetSubTotal();
                 Console.WriteLine("Please enter the amount of cash tendered");
                 var userInput = double.Parse(Console.ReadLine());
                 var cashFromCustomer = new Cash();
                 cashFromCustomer.Amount = userInput;
-                Console.WriteLine($"You have given me ${cashFromCustomer.Amount}");
+                Console.WriteLine($"You have given me ${cashFromCustomer.Amount}, your change is ${cashFromCustomer.Amount - getsubtotal.GetSubTotal()} ");
                 
                 
             } else if (userSelectedPaymentType == 2)
@@ -45,11 +47,12 @@ namespace GrandCircusMarket
                 var cardCVV = new CreditOrDebitCard();
                 cardCVV.CVV = userInput4;
 
-                Console.WriteLine($" Your card information is as follows" +
-                    $"Name: {nameOnCard.Name}" +
-                    $"CardNumber: {cardNumber.CardNumber}" +
-                    $"Card Expiration Date: {expirationDate.ExpirationDate}" +
-                    $"Card CVV: {cardCVV.CVV}");
+                Console.Write($" Your card information is as follows " +
+                    $"Name: {nameOnCard.Name} " +
+                    $"CardNumber: {cardNumber.CardNumber} " +
+                    $"Card Expiration Date: {expirationDate.ExpirationDate} " +
+                    $"Card CVV: {cardCVV.CVV} " +
+                    $"Thank you, your transaction is complete");
 
             } else
             {
@@ -72,6 +75,12 @@ namespace GrandCircusMarket
                 var userInput4 = double.Parse(Console.ReadLine());
                 var accountNumber = new Check();
                 accountNumber.AccountNumber = userInput4;
+                Console.WriteLine($"Your check information is as follows:" +
+                    $"You have entered your name as {userInput} " +
+                    $"The check number you wish to use is {userInput2} " +
+                    $"The Bank Routing Number is {userInput3} " +
+                    $"The Account Number is {userInput4} " +
+                    $"Thank you, your transaction is complete");
             }
         }
 
