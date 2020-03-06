@@ -7,25 +7,20 @@ namespace GrandCircusMarket
 {
     public class MenuRepo
     {
-        public double SelectMenuItem()
-        {
-            var getsubtotal = new ShoppingCart();
-            getsubtotal.GetSubTotal();
-            Console.WriteLine($"Your subtotal is ${getsubtotal.GetSubTotal()}");
-            
-            return getsubtotal.GetSubTotal();
-        }
+        ShoppingCart shoppingCart = new ShoppingCart();
+       
 
         public void RedisplayMenu()
         {
+            
             bool userWantsMoreFood = true;
 
             while (userWantsMoreFood)
             {
-                GetUserOrder();
-                Console.WriteLine("How Many Would you like?");
-                double userinput = double.Parse(Console.ReadLine());
-                SelectMenuItem();
+                AddUserItems();
+                GetUserQuantity();
+                var subtotal = shoppingCart.GetSubTotal();            
+                
                 if (GetUserAnswer().Equals("y", StringComparison.OrdinalIgnoreCase))
                 {
                     var menu = new FileIO();
@@ -35,26 +30,37 @@ namespace GrandCircusMarket
                 {
                     userWantsMoreFood = false;
                     Console.WriteLine("Thank you for your order!");
-                } 
-
+                    Console.WriteLine($"Your subtotal is {subtotal}");
+                }
             }  
         }
 
-        public string GetUserAnswer()
+        private string GetUserAnswer()
         {
             Console.WriteLine("Would you like to see the menu again? [y/n]");
             var userInput = Console.ReadLine();
             return userInput;
         }
 
-        public MenuItems GetUserOrder()
+        private double GetUserOrder()
         {
             Console.WriteLine("What would you like to order? Please select a number from the menu");
             var userInput = double.Parse(Console.ReadLine());
-            var getUserInput = new MenuItems(userInput);
-            var addItem = new ShoppingCart();
-            addItem.AddItem(userInput);
-            return getUserInput;
+            return userInput;
         }
+
+        private void AddUserItems()
+        {
+            
+            shoppingCart.AddItem(GetUserOrder());
+        }
+
+        private double GetUserQuantity()
+        {
+            Console.WriteLine("How Many Would you like?");
+            double userInput = double.Parse(Console.ReadLine());
+            return userInput;
+        }
+
     }
 }
