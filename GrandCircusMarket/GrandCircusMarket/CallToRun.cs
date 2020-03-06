@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace GrandCircusMarket
+{
+    public class CallToRun
+    {
+
+        public void RunPOSapp()
+        {
+            Console.WriteLine("Welcome to Grand Circus Market");
+            var menu = new FileIO();
+            menu.CreateDoc();
+            var tryOrderLogic = new MenuRepo();
+            tryOrderLogic.RedisplayMenu();
+            var subtotal = new ShoppingCart();
+            subtotal.GetSubTotal();
+            var getPayment = new RunMenuApp();
+            getPayment.GetPaymentType();
+        }
+    }
+}
