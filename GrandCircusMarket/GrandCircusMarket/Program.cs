@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GrandCircusMarket
 {
@@ -8,7 +9,6 @@ namespace GrandCircusMarket
         {
             var runApp = new CallToRun();
             runApp.RunPOSapp();
-
         }
     }
 }

@@ -225,7 +225,7 @@ namespace GrandCircusMarket
                 paymentTypeIs = "Check";
             }
             Console.WriteLine("Thank You For Your Purchase, Here Is Your Receipt");
-            Console.WriteLine($"You Ordered ");
+            Console.WriteLine($"You Ordered {MenuItems.GetProperties()}");
             Console.WriteLine($"Subtotal . . . . . {subtotal.Sum()}");
             Console.WriteLine($"Grand Total . . . . . {subtotal.Sum() + (subtotal.Sum() * .06)}");
             Console.WriteLine($"Payment Type . . . . . {paymentTypeIs}");

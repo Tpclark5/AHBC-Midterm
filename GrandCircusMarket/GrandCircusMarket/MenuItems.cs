@@ -74,5 +74,9 @@ namespace GrandCircusMarket
             }
         }
 
+        internal static object GetProperties()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
