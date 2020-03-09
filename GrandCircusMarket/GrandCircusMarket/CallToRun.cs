@@ -14,10 +14,7 @@ namespace GrandCircusMarket
             menu.CreateDoc();
             var tryOrderLogic = new MenuRepo();
             tryOrderLogic.RedisplayMenu();
-            var subtotal = new ShoppingCart();
-            subtotal.GetSubTotal();
-            var getPayment = new RunMenuApp();
-            getPayment.GetPaymentType();
+            
         }
     }
 }
