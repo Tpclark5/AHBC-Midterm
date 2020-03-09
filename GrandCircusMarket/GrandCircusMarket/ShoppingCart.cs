@@ -11,7 +11,7 @@ namespace GrandCircusMarket
         {
             Items = new List<MenuItems>();
         }
-        public void AddItem(double itemName)
+        public void AddItem(string itemName)
         {
             var newItem = new MenuItems(itemName);
             if (Items.Contains(newItem))
@@ -22,22 +22,17 @@ namespace GrandCircusMarket
                     {
                         item.Quantity++;
                     }
-                } 
+                }
             }
             else
             {
                 newItem.Quantity = 1;
-                Items.Add(newItem);
+                Items.Add(newItem); 
+              
             }
         }
 
-        public double GetSubTotal()
-        {
-            double subTotal = 0;
-            foreach (var item in Items)
-                subTotal += item.SubTotal;
 
-            return subTotal;
-        }
+       
     }
 }

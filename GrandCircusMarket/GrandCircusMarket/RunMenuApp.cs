@@ -8,6 +8,7 @@ namespace GrandCircusMarket
     {
       public void GetPaymentType()
         {
+            
             Console.WriteLine("How would you like to pay? Please select one of the following payment types:");
             Console.WriteLine("[1] Cash");
             Console.WriteLine("[2] Credit or Debit Card");
@@ -16,13 +17,12 @@ namespace GrandCircusMarket
 
             if (userSelectedPaymentType == 1)
             {
-                var getsubtotal = new ShoppingCart();
-                getsubtotal.GetSubTotal();
+                
                 Console.WriteLine("Please enter the amount of cash tendered");
                 var userInput = double.Parse(Console.ReadLine());
                 var cashFromCustomer = new Cash();
                 cashFromCustomer.Amount = userInput;
-                Console.WriteLine($"You have given me ${cashFromCustomer.Amount}, your change is ${cashFromCustomer.Amount - getsubtotal.GetSubTotal()} ");
+                Console.WriteLine($"You have given me ${cashFromCustomer.Amount}, your change is ${cashFromCustomer.Amount} ");
                 
                 
             } else if (userSelectedPaymentType == 2)
