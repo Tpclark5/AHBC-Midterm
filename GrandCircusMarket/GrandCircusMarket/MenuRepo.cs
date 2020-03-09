@@ -119,6 +119,15 @@ namespace GrandCircusMarket
             }
         public void PaymentType()
         {
+            string expirationDateEntered = "";
+            double cardNumberEntered = 0;
+            double CVVentered = 0;
+            double checkNumberentered = 0;
+            double accountNumberentered = 0;
+            double routingnumberentered = 0;
+            string nameoncardorcheckentered = "";
+            double changeReturned = 0;
+            double cashGiven = 0;
             string paymentTypeIs = "";
             Console.WriteLine("How would you like to pay? Please select one of the following payment types:");
             Console.WriteLine("[1] Cash");
@@ -134,8 +143,8 @@ namespace GrandCircusMarket
                 var cashFromCustomer = new Cash();
                 cashFromCustomer.Amount = userInput;
                 Console.WriteLine($"You have given me ${cashFromCustomer.Amount}, your change is ${cashFromCustomer.Amount - subtotal.Sum() + (subtotal.Sum() * .06) } ");
-
-
+                cashGiven = cashFromCustomer.Amount;
+                changeReturned = cashFromCustomer.Amount - (subtotal.Sum() + (subtotal.Sum() * .06));
             }
             else if (userSelectedPaymentType == 2)
             {
@@ -144,21 +153,25 @@ namespace GrandCircusMarket
                 var userInput = Console.ReadLine();
                 var nameOnCard = new CreditOrDebitCard();
                 nameOnCard.Name = userInput;
+                nameoncardorcheckentered = nameOnCard.Name;
 
                 Console.WriteLine("Please enter the cardnumber:");
                 var userInput2 = double.Parse(Console.ReadLine());
                 var cardNumber = new CreditOrDebitCard();
                 cardNumber.CardNumber = userInput2;
+                cardNumberEntered = cardNumber.CardNumber;
 
                 Console.WriteLine("Please enter the expiration date of the card:");
                 var userInput3 = Console.ReadLine();
                 var expirationDate = new CreditOrDebitCard();
                 expirationDate.ExpirationDate = userInput3;
+                expirationDateEntered = expirationDate.ExpirationDate;
 
                 Console.WriteLine("Please enter the CVV for then card:");
                 var userInput4 = double.Parse(Console.ReadLine());
                 var cardCVV = new CreditOrDebitCard();
                 cardCVV.CVV = userInput4;
+                CVVentered = cardCVV.CVV;
 
                 Console.Write($" Your card information is as follows " +
                     $"Name: {nameOnCard.Name} " +
@@ -174,16 +187,19 @@ namespace GrandCircusMarket
                 var userInput = Console.ReadLine();
                 var accountHolderName = new Check();
                 accountHolderName.AccountHolderName = userInput;
+                nameoncardorcheckentered = accountHolderName.AccountHolderName;
 
                 Console.WriteLine("Please enter the check number: ");
                 var userInput2 = double.Parse(Console.ReadLine());
                 var checknumber = new Check();
                 checknumber.CheckNumber = userInput2;
+                checkNumberentered = checknumber.CheckNumber;
 
                 Console.WriteLine("Please enter the routing number for the bank: ");
                 var userInput3 = double.Parse(Console.ReadLine());
                 var routingNumber = new Check();
                 routingNumber.RoutingNumber = userInput3;
+                routingnumberentered = routingNumber.RoutingNumber;
 
                 Console.WriteLine("Please enter the account number: ");
                 var userInput4 = double.Parse(Console.ReadLine());
@@ -208,13 +224,36 @@ namespace GrandCircusMarket
             {
                 paymentTypeIs = "Check";
             }
-            Console.WriteLine("Thank You for Visiting Grand Circus Market");
+            Console.WriteLine("Thank You For Your Purchase, Here Is Your Receipt");
             Console.WriteLine($"You Ordered ");
             Console.WriteLine($"Subtotal . . . . . {subtotal.Sum()}");
-            Console.WriteLine($" Grand Total . . . . . {subtotal.Sum() + (subtotal.Sum() * .06)}");
-            Console.WriteLine($" Payment Type . . . . . {paymentTypeIs}");
-
+            Console.WriteLine($"Grand Total . . . . . {subtotal.Sum() + (subtotal.Sum() * .06)}");
+            Console.WriteLine($"Payment Type . . . . . {paymentTypeIs}");
+            if (userSelectedPaymentType == 1)
+            {
+                Console.WriteLine($" Amount Tendered . . . . ${cashGiven}");
+                Console.WriteLine($" Change Returned . . . .${changeReturned}");
+            } else if( userSelectedPaymentType == 2)
+            {
+                Console.WriteLine($" Your card information is as follows " +
+                    $"Name: {nameoncardorcheckentered} " +
+                    $"CardNumber: {cardNumberEntered} " +
+                    $"Card Expiration Date: {expirationDateEntered} " +
+                    $"Card CVV: {CVVentered} ");
+            }
+            else
+            {
+                Console.WriteLine($"Your check information is as follows:" +
+                       $"You have entered your name as {nameoncardorcheckentered} " +
+                       $"The check number you wish to use is {checkNumberentered} " +
+                       $"The Bank Routing Number is {routingnumberentered} " +
+                       $"The Account Number is {accountNumberentered} ");
+                       
+            }
+            Console.WriteLine("Thank you, Please Come Again!");
         }
-       
+
+        
+    
     }
 }
